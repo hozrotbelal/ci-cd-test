@@ -37,16 +37,10 @@ jobs:
 
   instrumentation-test:
     needs: [unit-test]
-    runs-on: windowsos-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-
-      - name: Run espresso tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 32
-          script: ./gradlew connectedCheck
 
       - name: Upload test report
         uses: actions/upload-artifact@v2
